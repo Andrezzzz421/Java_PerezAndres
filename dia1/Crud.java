@@ -1,21 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package crud;
 
 import java.util.Scanner;
 
-/**
- *
- * @author andres
- */
-
 public class Crud {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         CamperCrud camperCrud = new CamperCrud(20);
         Scanner scanner = new Scanner(System.in);
@@ -27,7 +15,8 @@ public class Crud {
             System.out.println("2. Leer Campers");
             System.out.println("3. Actualizar Camper");
             System.out.println("4. Eliminar Camper");
-            System.out.println("5. Salir");
+            System.out.println("5. Ingresar Notas de Prueba Inicial");
+            System.out.println("6. Salir");
             System.out.print("Elige una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -35,9 +24,6 @@ public class Crud {
             switch (opcion) {
                 case 1:
                     System.out.println("Introduce los datos del camper:");
-                    System.out.print("ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
                     System.out.print("Número de documento: ");
                     int n_documento = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
@@ -61,12 +47,8 @@ public class Crud {
                     System.out.print("Número fijo: ");
                     int n_fijo = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                    System.out.print("Estado: ");
-                    String estado = scanner.nextLine();
-                    System.out.print("Riesgo: ");
-                    String riesgo = scanner.nextLine();
 
-                    camperCrud.crearCamper(id, n_documento, nombre, nombre2, apellido, apellido2, ciudad, direccion, acudiente, n_celular, n_fijo, estado, riesgo);
+                    camperCrud.crearCamper(n_documento, nombre, nombre2, apellido, apellido2, ciudad, direccion, acudiente, n_celular, n_fijo);
                     break;
 
                 case 2:
@@ -103,12 +85,8 @@ public class Crud {
                     System.out.print("Número fijo: ");
                     n_fijo = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                    System.out.print("Estado: ");
-                    estado = scanner.nextLine();
-                    System.out.print("Riesgo: ");
-                    riesgo = scanner.nextLine();
 
-                    camperCrud.actualizarCamper(idActualizar, n_documento, nombre, nombre2, apellido, apellido2, ciudad, direccion, acudiente, n_celular, n_fijo, estado, riesgo);
+                    camperCrud.actualizarCamper(idActualizar, n_documento, nombre, nombre2, apellido, apellido2, ciudad, direccion, acudiente, n_celular, n_fijo);
                     break;
 
                 case 4:
@@ -124,6 +102,26 @@ public class Crud {
                     break;
 
                 case 5:
+                    System.out.print("Introduce el ID del camper para ingresar notas: ");
+                    int idNotas = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+
+                    System.out.print("Ingrese la nota práctica de la prueba inicial: ");
+                    int notaPractica = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+
+                    System.out.print("Ingrese la nota teórica de la prueba inicial: ");
+                    int notaTeorica = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+
+                    if (camperCrud.ingresarNotas(idNotas, notaPractica, notaTeorica)) {
+                        System.out.println("Notas ingresadas correctamente.");
+                    } else {
+                        System.out.println("Error al ingresar notas.");
+                    }
+                    break;
+
+                case 6:
                     System.out.println("Saliendo del programa...");
                     break;
 
@@ -131,7 +129,7 @@ public class Crud {
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
                     break;
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
 
         scanner.close();
     }
