@@ -14,9 +14,10 @@ public class Camper {
     private int n_celular;
     private int n_fijo;
     private String estado;
+    private String riesgo; 
     private int notaPractica;
     private int notaTeorica;
-
+    
     public Camper(int n_documento, String nombre, String nombre2, String apellido, String apellido2, String ciudad, String direccion, String acudiente, int n_celular, int n_fijo) {
         this.id = nextId++;
         this.n_documento = n_documento;
@@ -30,6 +31,7 @@ public class Camper {
         this.n_celular = n_celular;
         this.n_fijo = n_fijo;
         this.estado = "Inscrito";
+        this.riesgo = "Sin riesgo"; 
     }
 
     // Getters y Setters
@@ -56,6 +58,8 @@ public class Camper {
     public void setN_fijo(int n_fijo) { this.n_fijo = n_fijo; }
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+    public String getRiesgo() { return riesgo; }
+    public void setRiesgo(String riesgo) { this.riesgo = riesgo; }
     public int getNotaPractica() { return notaPractica; }
     public void setNotaPractica(int notaPractica) { this.notaPractica = notaPractica; }
     public int getNotaTeorica() { return notaTeorica; }
@@ -84,8 +88,7 @@ public class Camper {
                ", n_celular=" + n_celular + 
                ", n_fijo=" + n_fijo + 
                ", estado='" + estado + '\'' + 
-               ", notaPractica=" + notaPractica + 
-               ", notaTeorica=" + notaTeorica + 
+               ", riesgo='" + riesgo + '\'' + 
                '}';
     }
 }
